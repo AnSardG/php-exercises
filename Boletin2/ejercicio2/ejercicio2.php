@@ -1,5 +1,6 @@
 <?php
 /**
+ * ENUNCIADO:
  * 2. Modificar el ejercicio anterior para usar el método POST en lugar de
  * GET. Acceder a los datos enviados desde el formulario y mostrar el
  * mensaje de bienvenida.

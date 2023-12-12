@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 1</title>
+</head>
+
+<body>
+    <h1>Caso práctico 1</h1>
+    <form action="ejercicio01.php" method="POST">
+        <p>Cantidad: <input type="text" name="cantidad" id="decimal">
+            <label for="conversion">Unidades:</label>
+            <select id="conversion" name="unidadesConversion">
+                <option value="pulgadas">Pulgadas</option>
+                <option value="pies">Pies</option>
+                <option value="yardas">Yardas</option>
+                <option value="millas">Millas</option>
+            </select>
+        </p>
+        <label for="conversion">Selecciona la unidad decimal:</label>
+        
+        <select id="decimal" name="unidadesDecimales">
+            <option value="centimetros">Centímetros</option>
+            <option value="metros">Metros</option>
+            <option value="kilometros">Kilómetros</option>
+        </select>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>

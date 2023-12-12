@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 1</title>
+</head>
+<body>
+    <!--
+    <h1>Mi Formulario</h1>
+    <form action="Ejemplo01.php" method="POST">
+        <p>Nombre: <input type="text" name="nombre"/></br></p>
+        <p>Apellidos: <input type="text" name="apellidos"/></br></p>
+        <input type="submit" name="Enviar"/></br>
+    </form>
+    -->
+    
+    <form action="Ejemplo04.php" method="POST">
+        <p>Nombre: <input type="text" name="nombre"/></p>
+        <p>Apellidos: <input type="text" name="apellidos"/></p>
+        <label>Mis intereses: </label></br>
+        <input type="checkbox" name="interes[]" value="Deportes"/>Deportes</br>
+        <input type="checkbox" name="interes[]" value="Musica"/>Música</br>
+        <input type="checkbox" name="interes[]" value="Libros"/>Libros</br>
+        <input type="checkbox" name="interes[]" value="Cine"/>Cine</br>
+        <input type="submit" value="Enviar"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulario de Registro</h1>
+    <form action="practico02.php" method="POST">
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+        </p>
+        <p>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos">
+        </p>
+        <p>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+        </p>
+        <p>
+            <label for="poblacion">Población:</label>
+            <input type="text" id="poblacion" name="poblacion">
+        </p>
+        <p>
+            <label>Sexo:</label><br>
+            <input type="radio" id="masculino" name="sexo" value="masculino">
+            <label for="masculino">Masculino</label><br>
+
+            <input type="radio" id="femenino" name="sexo" value="femenino">
+            <label for="femenino">Femenino</label>
+        </p>
+        <p>
+            <label for="condiciones">¿Acepta las condiciones de acceso?</label>
+            <input type="checkbox" id="condiciones" name="condiciones" value="si">
+        </p>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>

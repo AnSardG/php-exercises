@@ -5,9 +5,15 @@
  * electrónico. Al enviar el formulario, mostrar un mensaje de
  * bienvenida usando el método GET.
  */
-$nombre = $_GET['nombre'];
-$correo = $_GET['email'];
-
-echo "Bienvenido $nombre. Su correo es: $correo";
+if(isset($_GET['nombre']) && isset($_GET['email'])){
+    $nombre = $_GET['nombre'];
+    $correo = $_GET['email'];
+    
+    echo "<div class='container mt-3'>";
+    echo "<div class='alert alert-success' role='alert'>";
+    echo "Bienvenido <strong>$nombre</strong>. Su correo es: <strong>$correo</strong>";
+    echo "</div>";
+    echo "</div>";
+}
 
 ?>

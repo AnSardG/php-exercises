@@ -64,7 +64,7 @@
     $result = $conn->query($sql);
 
     // Manejar el envío del formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["producto"])) {
         // Obtener el código del producto seleccionado
         $productoSeleccionado = $_POST["producto"];
 
@@ -108,7 +108,8 @@
 
     <?php
     // Mostrar el stock si se ha enviado el formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && $resultStock->num_rows > 0) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultStock) 
+    && $resultStock->num_rows > 0) {
     ?>
         <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <h3>Stock del producto seleccionado por tienda:</h3>
@@ -142,23 +143,16 @@
     <?php
     }
 
-    // Manejar el envío del formulario de actualización
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizarStock'])) {        
-        // Obtener el código del producto seleccionado
-        $productoSeleccionado = $_POST["productoSeleccionado"];
-
-        // Obtener el nuevo stock ingresado por el usuario para cada tienda
-        $nuevoStockPorTienda = $_POST["nuevoStock"];
-
-        // Iniciar una transacción para asegurar que todas las actualizaciones tengan éxito o ninguna
-        $conn->begin_transaction();
-
+        $productoSeleccionado = $_POST["productoSeleccionado"];        
+        $nuevoStockPorTienda = $_POST["nuevoStock"];        
+        
         try {
             // Actualizar el stock en la base de datos para cada tienda
-            foreach ($nuevoStockPorTienda as $tienda => $nuevoStock) {
+            foreach ($nuevoStockPorTienda as $tienda => $nuevoStock) {          
                 $sqlActualizarStock = "UPDATE STOCK SET UNIDADES = '$nuevoStock'
                            WHERE PRODUCTO = '$productoSeleccionado'
-                           AND TIENDA = '$tienda'";
+                           AND TIENDA = (SELECT COD FROM TIENDA WHERE NOMBRE = '$tienda');";
                 $resultActualizarStock = $conn->query($sqlActualizarStock);
 
                 // Verificar si la actualización fue exitosa
@@ -168,7 +162,7 @@
             }
 
             // Confirmar la transacción si todas las actualizaciones fueron exitosas
-            $conn->commit();
+            $conn->commit();            
 
             echo "<p>Stock actualizado correctamente.</p>";
         } catch (Exception $e) {

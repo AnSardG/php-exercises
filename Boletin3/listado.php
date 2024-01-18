@@ -83,7 +83,7 @@ session_start();
             </tr>
             <?php
 
-            $productosFamilia = $db->query("SELECT NOMBRE_CORTO, PVP FROM PRODUCTO WHERE FAMILIA = (SELECT COD FROM FAMILIA WHERE COD = '$seleccionado');");
+            $productosFamilia = $db->query("SELECT NOMBRE_CORTO, PVP, NOMBRE, DESCRIPCION FROM PRODUCTO WHERE FAMILIA = (SELECT COD FROM FAMILIA WHERE COD = '$seleccionado');");
 
             while ($rowProducto = $productosFamilia->fetch(PDO::FETCH_ASSOC)) {
             ?>
@@ -95,8 +95,11 @@ session_start();
                         <?php echo $rowProducto["PVP"] ?>
                     </td>
                     <td>
-                        <form method="post" action="editar.php">
-                            <input type="hidden" name="productoSeleccionado" value="<?php echo $rowProducto['NOMBRE_CORTO']; ?>">
+                        <form method="post" action="editar.php">                            
+                            <input type="hidden" name="nombreCortoProducto" value="<?php echo htmlspecialchars($rowProducto['NOMBRE_CORTO']); ?>">
+                            <input type="hidden" name="pvpProducto" value="<?php echo htmlspecialchars($rowProducto['PVP']); ?>">
+                            <input type="hidden" name="nombreProducto" value="<?php echo htmlspecialchars($rowProducto['NOMBRE']); ?>">
+                            <input type="hidden" name="descProducto" value="<?php echo htmlspecialchars($rowProducto['DESCRIPCION']); ?>">
                             <input type="submit" value="Editar">
                         </form>
                     </td>

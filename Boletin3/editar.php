@@ -64,6 +64,7 @@ $nombreCorto = $producto['NOMBRE_CORTO'];
 $nombre = $producto['NOMBRE'];
 $pvp = $producto['PVP'];
 $descripcion = $producto['DESCRIPCION'];
+
 ?>
 
 <body>

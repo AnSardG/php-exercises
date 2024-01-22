@@ -8,7 +8,6 @@ try {
     echo 'Error de conexión: ' . $e->getMessage();
 }
 
-//session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,23 +50,25 @@ try {
 </head>
 
 <?php
-//Verificamos  que se han enviado los datos en la página anterior, si no es así se redireccionará a la página anterior.
+//Verificamos  que se han enviado los datos en la página anterior, si no es así se redireccionará de nuevo atrás.
 if(!isset($_GET['cod'])){
-    header("Location: listado.php");
+    header("Location: listado.php?err=no_cod");
     exit();        
 } 
+//Saneamos el código ya que puede inyectarse código mediante el método GET.
 $cod = htmlspecialchars($_GET['cod']);
 $result = $db->query("SELECT NOMBRE_CORTO, PVP, NOMBRE, DESCRIPCION FROM PRODUCTO WHERE COD = '$cod' LIMIT 1;");
 
+//Obtenemos los datos del producto seleccionado anteriormente.
 $producto = $result->fetch(PDO::FETCH_ASSOC);
 $nombreCorto = $producto['NOMBRE_CORTO'];
 $nombre = $producto['NOMBRE'];
 $pvp = $producto['PVP'];
 $descripcion = $producto['DESCRIPCION'];
-
 ?>
 
 <body>
+    <!-- Mostramos la información con los valores ya puestos por defecto.-->
     <h1>DESCRIPCIÓN DEL PRODUCTO SELECCIONADO</h1>
     <form action="actualizar.php" method="post">
         <label for="nombre"><b>Nombre: </b></label>
@@ -80,10 +81,12 @@ $descripcion = $producto['DESCRIPCION'];
         <input type="number" name="pvp" id="pvp" value="<?php echo $pvp?>">
 
         <label for="descripcion"><b>Descripción: </b></label>
-        <textarea id="descripcion" name="descripcion" required><?php echo $descripcion; ?></textarea>
+        <textarea id="descripcion" name="descripcion"><?php echo $descripcion; ?></textarea>
 
         <input type="hidden" name="codProducto" value="<?php echo $cod; ?>">        
 
+        <!-- Si pulsamos en el botón de actualizar iremos a la página puesta en el atributo "action" de este formulario,
+        sino, mediante el atributo "onclick" volveremos al listado de productos.-->
         <button type="submit">Actualizar</button>
         <button type="button" onclick="window.location.href='listado.php'">Cancelar</button>
 

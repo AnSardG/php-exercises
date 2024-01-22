@@ -8,7 +8,6 @@ try {
     echo 'Error de conexión: ' . $e->getMessage();
 }
 
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -52,11 +51,22 @@ session_start();
 </head>
 
 <body>
+    <?php
+
+        //Comprobamos si otras páginas nos han mandado información por get relevante.
+
+        if(isset($_GET['err'])) {
+            echo "<h2>Ha ocurrido un error a la hora de obtener el producto.</h2>";
+        } else if (isset($_GET['modified'])){
+            echo "<h2>No se modificó ningún dato</h2>";
+        }
+    ?>    
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
         <label for="familias">Seleccione la familia: </label>
         <select name="seleccionado" id="familia">
             <?php
             $result = $db->query("SELECT DISTINCT COD FROM FAMILIA;");
+            //Recorremos todas las familias mediante la consulta de arriba con el método FETCH y de forma asociativa.
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 $cod_familia = $row['COD'];
                 $result_nombre_familia = $db->query("SELECT NOMBRE FROM FAMILIA WHERE COD = '$cod_familia';")->fetch(PDO::FETCH_ASSOC);
@@ -70,6 +80,7 @@ session_start();
     </form>
 
     <?php
+    //Una vez se haya seleccionado la familia buscamos el producto mediante el código seleccionado anteriormente.
     if (isset($_POST['submit'])) {
         $seleccionado = $_POST['seleccionado'];
 
@@ -95,6 +106,9 @@ session_start();
                         <?php echo $rowProducto["PVP"] ?>
                     </td>
                     <td>
+                        <!-- Para evitar hacer un formulario dentro de otro, utilizamos un vínculo que redirija a la siguiente página
+                        con el código dado por GET, lo que hay que tener cuidado y sanear dicho código al pasarse por GET en la próxima
+                        página como veremos en "editar.php"-->
                         <a href="editar.php?cod=<?php echo $rowProducto['COD'];?>">Editar</a>
                     </td>
                 </tr>

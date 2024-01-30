@@ -18,33 +18,74 @@ try {
     <title>Editar</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        h1 {
+            color: #333;
         }
 
         form {
             margin-bottom: 20px;
         }
 
-        table {
-            border-collapse: collapse;
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
             width: 100%;
-        }
-
-        table,
-        th,
-        td {
+            padding: 10px;
+            margin-bottom: 12px;
             border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
         }
 
-        th {
-            background-color: #f2f2f2;
+        button[type="button"] {
+            background-color: #bbb;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
         }
     </style>
 </head>
@@ -68,6 +109,9 @@ $descripcion = $producto['DESCRIPCION'];
 ?>
 
 <body>
+    <header>
+        <h1>Boletín 3</h1>
+    </header>
     <!-- Mostramos la información con los valores ya puestos por defecto.-->
     <h1>DESCRIPCIÓN DEL PRODUCTO SELECCIONADO</h1>
     <form action="actualizar.php" method="post">
@@ -91,6 +135,12 @@ $descripcion = $producto['DESCRIPCION'];
         <button type="button" onclick="window.location.href='listado.php'">Cancelar</button>
 
     </form>
+
+    <footer>
+        <?php
+            echo "© Antonio Sard González" . date("Y");
+        ?>
+    </footer>
 
 </body>
 

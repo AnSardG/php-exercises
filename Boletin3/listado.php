@@ -19,38 +19,112 @@ try {
     <title>Listado</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
         }
 
         form {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
 
-        table,
         th,
         td {
             border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
         }
+
+        label {
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+        }
+
+        select option:checked {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="submit"],
+        a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        a {
+            background-color: #007BFF;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: auto;
+        padding: 10px 0;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        }
+
+
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Boletín 3</h1>
+    </header>
     <?php
 
         //Comprobamos si otras páginas nos han mandado información por get relevante.
@@ -75,7 +149,8 @@ try {
                 echo "<option value='$cod_familia'>$nombre_familia</option>";
             }
             ?>
-        </select>
+        </select>                
+
         <input type="submit" name="submit" value="Mostrar">
     </form>
 
@@ -83,10 +158,11 @@ try {
     //Una vez se haya seleccionado la familia buscamos el producto mediante el código seleccionado anteriormente.
     if (isset($_POST['submit'])) {
         $seleccionado = $_POST['seleccionado'];
+        $nombreFamilia = $db->query("SELECT NOMBRE FROM FAMILIA WHERE COD = '$seleccionado';")->fetch(PDO::FETCH_COLUMN);
 
     ?>
 
-        <h3>Listado de productos de la familia <?php echo $seleccionado ?>:</h3>
+        <h3>Listado de productos de la familia <?php echo $nombreFamilia ?>:</h3>
         <table>
             <tr>
                 <th>Nombre</th>
@@ -120,6 +196,12 @@ try {
     <?php
     }
     ?>
+
+    <footer>
+        <?php
+            echo "© Antonio Sard González " . date("Y");
+        ?>
+    </footer>
 </body>
 
 </html>

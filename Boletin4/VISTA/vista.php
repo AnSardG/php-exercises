@@ -10,7 +10,7 @@
             <option value="<?php echo $familia['COD']?>"><?php echo $familia['NOMBRE']?></option>
         <?php endforeach; ?>       
     </select>
-    <input type="submit" name="submit" value="Mostrar">
+    <input class="mostrar" type="submit" name="submit" value="Mostrar">
 </form>
 
 <?php if(isset($seleccionado)): ?>

@@ -16,6 +16,6 @@
     <input type="hidden" name="codProducto" value="<?php echo $cod; ?>">        
 
     <button type="submit">Actualizar</button>
-    <button type="button"><a class="link" href="index.php">Cancelar</a></button>
+    <a class="link" href="index.php">Cancelar</a>
 
 </form>

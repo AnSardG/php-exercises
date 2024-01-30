@@ -18,6 +18,11 @@
         <?php include $data['body']?>
     </main>
 
+    <footer>
+        <?php
+            echo "© Antonio Sard González " . date("Y");
+        ?>
+    </footer>
 </body>
 
 </html>

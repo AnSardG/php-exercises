@@ -209,7 +209,7 @@ session_start();
     ?>
     <footer>
         <?php
-            echo "© Antonio Sard González" . date("Y");
+            echo "© Antonio Sard González " . date("Y");
         ?>
     </footer>
 

@@ -138,7 +138,7 @@ $descripcion = $producto['DESCRIPCION'];
 
     <footer>
         <?php
-            echo "© Antonio Sard González" . date("Y");
+            echo "© Antonio Sard González " . date("Y");
         ?>
     </footer>
 

@@ -19,29 +19,42 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boletín 3 extra</title>
     <style>        
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
         }
 
-        form {
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
             margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
 
-        table,
         th,
         td {
             border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
         }
 
@@ -49,12 +62,55 @@ session_start();
             background-color: #f2f2f2;
         }
 
-        button {
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        a {
+            display: inline-block;
+            text-decoration: none;
             padding: 10px 15px;
-            font-size: 16px;
-            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 5px;
+            color: #fff;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button[type="button"] {
+            background-color: #bbb;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
         }
 
         .button-primary {
@@ -73,19 +129,20 @@ session_start();
         }
 
         a {
-            text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s ease;
+            background-color: #007BFF;
+            margin-left: 10px;
         }
 
         a:hover {
-            color: #e74c3c;
+            background-color: #0056b3;
         }
-
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Boletín 3 Extra</h1>
+    </header>
     <!-- Formulario de botones para votar y ver los resultados.-->
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <button class="button-primary" type="submit" name="votar">VOTAR</button>
@@ -142,14 +199,19 @@ session_start();
                 }
             }
 
-            echo "El nuevo candidato/a es: $candidato con $mayorVoto votos.";
+            echo "<h3>El nuevo candidato/a es: $candidato con $mayorVoto votos.</h3>";
             $db->query("UPDATE EMPLEADO SET VOTA_A = NULL;");
         } else {
-            echo "<p>No se ha cerrado la votación ya que no se ha votado a nadie.</p>";
+            echo "<h3>No se ha cerrado la votación ya que no se ha votado a nadie.</h3>";
         }
     }
 
     ?>
+    <footer>
+        <?php
+            echo "© Antonio Sard González" . date("Y");
+        ?>
+    </footer>
 
 </body>
 

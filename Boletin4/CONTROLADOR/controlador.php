@@ -23,7 +23,10 @@
         $nombre = $producto['NOMBRE'];
         $pvp = $producto['PVP'];
         $descripcion = $producto['DESCRIPCION'];
+
+        $data['body'] = 'C:\xampp\htdocs\Boletin4\VISTA\actualizar.php';
     }
+
 
     if(isset($_GET['actualizar'])) {
         $cod = htmlspecialchars($_POST['codProducto']);

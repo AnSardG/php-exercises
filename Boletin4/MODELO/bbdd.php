@@ -10,7 +10,7 @@ function crear_conexion($servidor, $usuario, $password, $base_datos){
     }        
 }
 
-function cerrar_conexion($conexion) {
+function cerrar_conexion(&$conexion) {
     $conexion = null;
 }
 

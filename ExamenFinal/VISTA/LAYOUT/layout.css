@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background-color: rgb(212, 212, 212);
+}
+
+.mrgn {
+    margin: 0px 20px;
+}
+
+header {
+    background-color: rgb(59, 59, 59);
+    color: rgb(230, 230, 230);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5em;
+    align-items: center;    
+}
+
+footer {
+    background-color: rgb(59, 59, 59);
+    color: rgb(230, 230, 230);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0px;
+}
+
+
+h1 {
+    font-weight: 900;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+li{
+    margin-right: 35px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    background-color: white;    
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
+    padding: 20px;
+    margin: 0px 30px;
+    margin-top: 20px;
+}
+
+.welcome h2 {
+    margin: 0;
+    font-weight: 900;
+}
+
+.welcome p {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.welcome-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15%;
+}
+.welcome-buttons button {
+    background-color: rgb(59, 59, 59);
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

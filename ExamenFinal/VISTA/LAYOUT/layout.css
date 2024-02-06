@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: rgb(212, 212, 212);
+    color: rgb(43, 43, 43);
 }
 
 .mrgn {
@@ -48,6 +49,8 @@ a{
     color: inherit;
 }
 
+/* INDEX VIEW STYLES */
+
 .welcome {
     display: flex;
     flex-direction: column;
@@ -86,3 +89,80 @@ a{
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* REGISTER/LOGIN VIEW STYLES */
+
+.login {
+    display: flex;
+    flex-direction: column;
+    background-color: white;    
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
+    padding: 20px;
+    margin: 0px 400px;
+    margin-top: 20px;    
+}
+
+.login h2 {
+    margin: 10px 0px 30px 0px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.login-form { 
+    display: flex;
+    flex-direction: column;
+}
+
+.login form {
+    width: 100%;
+}
+
+form label {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input:hover {
+    border-color: #a1dad0; /* Color azul más oscuro al pasar el mouse */
+  }
+
+form input {
+    margin-bottom: 20px;
+    border: 1px solid rgba(59, 59, 59, 0.281);
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+}
+
+input[type="submit"] {
+    align-self: center;
+    border: none;
+    width: 25%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(59, 59, 59);
+    color: rgb(230, 230, 230);
+  }
+    
+  input[type="submit"]:hover {
+    background-color: #333;
+  }
+
+  .login p {
+    margin: 0;    
+  }
+
+  .used-email {
+    color: red;    
+}
+
+  .login a {
+    text-decoration: underline;
+    color: #00000091;
+  }

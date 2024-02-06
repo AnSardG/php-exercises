@@ -2,7 +2,7 @@
 require_once('config.php');
 require_once('bbdd.php');
 
-function getClientes() {
+function getClientes(): array {
     //Conectamos con la base de datos y realizamos la consulta.
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
     $resultado = consulta_base_de_datos("SELECT * FROM CLIENTES;", $conexion);
@@ -12,4 +12,21 @@ function getClientes() {
     }
     cerrar_conexion($conexion);
     return $clientes;    
+}
+
+function isRegistered($email): bool {
+    $registered = false;
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT CORREO FROM CLIENTES WHERE CORREO = '$email';", $conexion);
+    if(obtener_resultados($resultado) != null) {
+        $registered = true;
+    }
+    cerrar_conexion($conexion);
+    return $registered;
+}
+
+function insertCliente($email, $password) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    consulta_base_de_datos("INSERT IGNORE INTO CLIENTES (CORREO, PASSWD) VALUES ('$email', '$password');", $conexion);
+    cerrar_conexion($conexion);
 }

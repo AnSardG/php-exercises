@@ -25,10 +25,8 @@
         PRIMARY KEY ( USUARIO )
     );
 
--- Creamos el usuario
 CREATE USER IF NOT EXISTS 'admin_restaurante' IDENTIFIED BY 'admin';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, EXECUTE ON *.* TO 'admin'@'%';
-
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, EXECUTE ON *.* TO 'admin_restaurante'@'%';
 
 -- Insertamos los datos
 

@@ -4,5 +4,5 @@
     <div class="welcome-buttons">
         <a href="index.php?rol=cliente"><button>Cliente</button></a>
         <a href="index.php?rol=personal"><button>Personal</button></a>        
-    </div>    
+    </div>        
 </div>

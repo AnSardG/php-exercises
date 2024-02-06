@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./VISTA/LAYOUT/layout.css">
     <title>
-        <?php echo $GLOBALS['title']; ?>
+        <?php echo TITLE ?>
     </title>
 </head>
 <body>
     <header>
-        <?php include $GLOBALS['header']; ?>
+        <?php include HEADER; ?>
     </header>
 
     <main>
-        <?php include $GLOBALS['body']; ?>
+        <?php include BODY; ?>
     </main>
 
     <footer>
-        <?php echo $GLOBALS['footer'] ?>  
+        <?php echo FOOTER ?>  
     </footer>
 </body>
 </html>

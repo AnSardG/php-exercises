@@ -2,7 +2,7 @@
 require_once('config.php');
 require_once('bbdd.php');
 
-function getClientes(): array {
+function getClientes() {
     //Conectamos con la base de datos y realizamos la consulta.
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
     $resultado = consulta_base_de_datos("SELECT * FROM CLIENTES;", $conexion);
@@ -14,7 +14,7 @@ function getClientes(): array {
     return $clientes;    
 }
 
-function isRegistered($email): bool {
+function isRegistered($email) {
     $registered = false;
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
     $resultado = consulta_base_de_datos("SELECT CORREO FROM CLIENTES WHERE CORREO = '$email';", $conexion);
@@ -29,4 +29,15 @@ function insertCliente($email, $password) {
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
     consulta_base_de_datos("INSERT IGNORE INTO CLIENTES (CORREO, PASSWD) VALUES ('$email', '$password');", $conexion);
     cerrar_conexion($conexion);
+}
+
+function checkLoginCliente($email, $password) {
+    $exists = false;
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT * FROM CLIENTES WHERE CORREO = '$email' AND PASSWD = '$password';", $conexion);
+    if(obtener_resultados($resultado) != null) {
+        $exists = true;
+    }
+    cerrar_conexion($conexion);
+    return $exists;    
 }

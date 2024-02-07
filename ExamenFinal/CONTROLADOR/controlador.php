@@ -10,7 +10,7 @@
     $data['title'] = TITLE;
     $data['header'] = HEADER;    
     $data['body'] = BODY;
-    $data['footer'] = FOOTER;
+    $data['footer'] = FOOTER;    
 
     // Lógica de cliente  
 
@@ -33,10 +33,37 @@
         }
     }
 
+    if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] == "POST") {      
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $loggedSuccesfully = checkLoginCliente($email, $password);
+    }
+
+    // Lógica cuando el usuario cliente se logea.
+    if(isset($loggedSuccesfully) && $loggedSuccesfully) {        
+        $data['header'] = HEADER_LOGGED;
+        $data['body'] = BODY_LOGGED;
+
+        if((isset($_POST['gestionar']) && $_SERVER['REQUEST_METHOD'] == "POST") 
+        || (isset($_GET['gestionar']) && $_GET['gestionar'])) {
+            // TODO: Llamada y lógica de reservas activas
+        }
+
+        if((isset($_POST['nueva']) && $_SERVER['REQUEST_METHOD'] == "POST") 
+        || (isset($_GET['nueva']) && $_GET['nueva'])) {
+            // TODO: Llamada y lógica de nuevas reservas
+        }
+
+        if((isset($_POST['historico']) && $_SERVER['REQUEST_METHOD'] == "POST") 
+        || (isset($_GET['historico']) && $_GET['historico'])) {
+            // TODO: Llamada y lógica de histórico de reservas
+        }
+    }
+
 
     // Lógica de personal
     if(isset($_GET['rol']) && $_GET['rol'] == 'personal') {
-        echo "TODO: LOGICA DEL PERSONAL";
+        // TODO: Lógica entera del personal
     }
 
     // Requerimos el layout.

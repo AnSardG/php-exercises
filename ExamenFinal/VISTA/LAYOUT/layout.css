@@ -141,14 +141,14 @@ form input {
 input[type="submit"] {
     align-self: center;
     border: none;
-    width: 25%;
+    
     border-radius: 5px;
     padding: 10px 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: rgb(59, 59, 59);
-    color: rgb(230, 230, 230);
-  }
+    color: rgb(230, 230, 230);    
+}
     
   input[type="submit"]:hover {
     background-color: #333;

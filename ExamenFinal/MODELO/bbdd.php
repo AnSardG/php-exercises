@@ -14,7 +14,7 @@ function cerrar_conexion(&$conexion) {
     $conexion = null;
 }
 
-function consulta_base_de_datos(string $consulta, PDO $conexion){
+function consulta_base_de_datos($consulta,  $conexion){
     return $conexion->query($consulta);
 }
 

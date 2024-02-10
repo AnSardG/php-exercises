@@ -73,3 +73,22 @@ function deleteBooking($fecha, $hora, $mesa) {
     consulta_base_de_datos("DELETE FROM RESERVAS WHERE FECHA = '$fecha' AND HORA = '$hora' AND MESA = '$mesa';", $conexion);
     cerrar_conexion($conexion);
 }
+
+function checkReserva($fecha, $hora, $mesa) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT FECHA, HORA, MESA FROM RESERVAS WHERE FECHA = '$fecha' AND HORA='$hora' AND MESA = '$mesa'", $conexion);
+    while($fila = obtener_resultados($resultado)){
+        $reserva[] = $fila;
+    }
+    cerrar_conexion($conexion);
+    if(!isset($reserva)){
+        $reserva = null;
+    }
+    return $reserva;
+}
+
+function createBooking($fecha, $hora, $mesa, $descripcion, $user_email) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    consulta_base_de_datos("INSERT INTO RESERVAS (FECHA, HORA, MESA, DESCRIPCION, CORREO_CLIENTE) VALUES ('$fecha', '$hora', $mesa, '$descripcion', '$user_email');", $conexion);
+    cerrar_conexion($conexion);
+}

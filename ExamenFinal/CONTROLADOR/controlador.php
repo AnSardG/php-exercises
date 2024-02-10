@@ -43,7 +43,11 @@
             $password = $_POST['password'];            
             $_SESSION['current_email'] = $email;
             $_SESSION['logged_succesfully'] = checkLoginCliente($email, $password);
-            header("Location: index.php");
+            if($_SESSION['logged_succesfully']) {
+                header("Location: index.php");
+            } else {                
+                header("Location: index.php?login=true&wrong=");
+            }            
         }
     } else {        
         // Lógica cuando el usuario cliente se logea.
@@ -52,15 +56,15 @@
             $data['body'] = BODY_LOGGED;                
             
             if((isset($_POST['gestionar']) && $_SERVER['REQUEST_METHOD'] == "POST")
-            || (isset($_GET['gestionar']) && $_SERVER['REQUEST_METHOD'] == "GET")) {
-                // TODO: Llamada y lógica de reservas activas      
+            || (isset($_GET['gestionar']) && $_SERVER['REQUEST_METHOD'] == "GET")) {                   
                 $current_active_bookings = getActiveBookings($_SESSION['current_email']); 
                 $data['body'] = BODY_RESERVATION_GESTION;      
             }
 
             if((isset($_POST['nueva']) && $_SERVER['REQUEST_METHOD'] == "POST")
             || (isset($_GET['nueva']) && $_SERVER['REQUEST_METHOD'] == "GET")) {
-                // TODO: Llamada y lógica de nuevas reservas
+                // TODO: Llamada y lógica de nuevas reservas                       
+                $data['body'] = BODY_RESERVATION_NEW;
             }
 
             if((isset($_POST['historico']) && $_SERVER['REQUEST_METHOD'] == "POST") 
@@ -78,6 +82,24 @@
             deleteBooking($_POST['fecha'], $_POST['hora'], $_POST['mesa']);
             header("Location: index.php?gestionar=");
         }
+
+        // Lógica de nueva reserva
+        if(isset($_POST['reservar'])) {            
+            $fecha_elegida = $_POST['fecha'];
+            $hora_elegida = $_POST['hora'];
+            $mesa_elegida = $_POST['mesa'];
+            $descripcion = $_POST['descripcion'];
+
+            $reservaExistente = checkReserva($fecha_elegida, $hora_elegida, $mesa_elegida);
+            if($reservaExistente != null) {
+                header("Location: index.php?nueva=&wrong=");
+            } else {
+                if(trim($descripcion) == ''){
+                    $descripcion = NULL;
+                }
+                createBooking($fecha_elegida, $hora_elegida, $mesa_elegida, $descripcion, $_SESSION['current_email']);
+            }
+        }    
 
         // Lógica de personal
         if(isset($_GET['rol']) && $_GET['rol'] == 'personal') {

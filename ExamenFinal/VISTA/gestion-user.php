@@ -1,3 +1,4 @@
+<!-- Los estilos de historico son adecuados para esta vista también -->
 <div class="historico">
     <h2>Reservas Activas</h2>    
     <?php if(isset($current_active_bookings)) : ?>

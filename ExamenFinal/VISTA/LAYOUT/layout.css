@@ -49,7 +49,7 @@ a {
     color: inherit;
 }
 
-/* INDEX VIEW STYLES */
+/* LOGGED OUT INDEX VIEW STYLES */
 
 .welcome {
     display: flex;
@@ -169,7 +169,7 @@ input[type="submit"]:hover {
     color: #00000091;
 }
 
-/* BOOKING HISTORIC STYLES */
+/* BOOKING HISTORIC VIEW STYLES */
 .historico {
     display: flex;
     flex-direction: column;
@@ -208,4 +208,53 @@ input[type="submit"]:hover {
 
 .historico tbody tr td input{
     background-color: red;
+}
+
+.historico tbody tr td input:hover {
+    background-color: rgba(255, 0, 0, 0.781);
+}
+
+/* NEW BOOKING VIEW STYLES */
+
+.new-booking {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
+    padding: 20px;
+    margin: 0px 600px;
+    margin-top: 20px;
+}
+
+.new-booking h2 {
+    margin: 10px 0px 30px 0px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.new-booking form {
+    width: 100%;
+}
+
+.new-booking label {
+    font-size: 18px;
+}
+
+.new-booking input[type="date"],
+.new-booking select,
+.new-booking textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.new-booking textarea {
+    padding-bottom: 40px;
 }

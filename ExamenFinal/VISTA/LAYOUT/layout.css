@@ -186,7 +186,8 @@ input[type="submit"]:hover {
 .historico table {
     width: 80%;
     border-collapse: collapse;
-    border: 1px solid #ddd;
+    border: 1px solid #e8e8e8;
+    font-size: 18px;
 }
 
 .historico th {
@@ -199,4 +200,12 @@ input[type="submit"]:hover {
 .historico td {
     padding: 10px;
     border: 1px solid #ddd;
+}
+
+.historico tbody tr td {
+    font-weight:lighter;
+}
+
+.historico tbody tr td input{
+    background-color: red;
 }

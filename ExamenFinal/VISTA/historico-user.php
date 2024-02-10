@@ -22,6 +22,6 @@
         </tbody>
     </table>
     <?php else : ?>
-        <h3>NINGUNA RESERVA DISPONIBLE</h3>
+        <h3>No ha hecho ninguna reserva aún.</h3>
     <?php endif ?>
 </div>

@@ -45,7 +45,7 @@
             $_SESSION['logged_succesfully'] = checkLoginCliente($email, $password);
             header("Location: index.php");
         }
-    } else {
+    } else {        
         // Lógica cuando el usuario cliente se logea.
         if((isset($_SESSION['logged_succesfully']) && $_SESSION['logged_succesfully'])) {        
             $data['header'] = HEADER_LOGGED;
@@ -53,7 +53,9 @@
             
             if((isset($_POST['gestionar']) && $_SERVER['REQUEST_METHOD'] == "POST")
             || (isset($_GET['gestionar']) && $_SERVER['REQUEST_METHOD'] == "GET")) {
-                // TODO: Llamada y lógica de reservas activas            
+                // TODO: Llamada y lógica de reservas activas      
+                $current_active_bookings = getActiveBookings($_SESSION['current_email']); 
+                $data['body'] = BODY_RESERVATION_GESTION;      
             }
 
             if((isset($_POST['nueva']) && $_SERVER['REQUEST_METHOD'] == "POST")
@@ -64,11 +66,17 @@
             if((isset($_POST['historico']) && $_SERVER['REQUEST_METHOD'] == "POST") 
             || (isset($_GET['historico']) && $_SERVER['REQUEST_METHOD'] == "GET")) {
                 // Obtener datos del historial de reservas del cliente de la base de datos            
-                $current_historic = getHistoryCliente($_SESSION['current_email']);
+                $current_historic = getHistoryCliente($_SESSION['current_email']);                
 
-                // Mostrarlos en el body de historico
+                // Mostrar los datos en el body de historico
                 $data['body'] = BODY_RESERVATION_HISTORY;
             }
+        }
+
+        // Lógica de borrado de reserva
+        if(isset($_POST['cancelar'])){                            
+            deleteBooking($_POST['fecha'], $_POST['hora'], $_POST['mesa']);
+            header("Location: index.php?gestionar=");
         }
 
         // Lógica de personal

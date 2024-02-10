@@ -54,3 +54,22 @@ function getHistoryCliente($email) {
     }
     return $history;
 }
+
+function getActiveBookings($email) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT FECHA, HORA, MESA, DESCRIPCION FROM RESERVAS WHERE CORREO_CLIENTE = '$email' AND FECHA>=CURDATE();", $conexion);
+    while ($fila = obtener_resultados($resultado)) {
+        $history[] = $fila;
+    }
+    cerrar_conexion($conexion);
+    if(!isset($history)){
+        $history = null;
+    }
+    return $history;
+}
+
+function deleteBooking($fecha, $hora, $mesa) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    consulta_base_de_datos("DELETE FROM RESERVAS WHERE FECHA = '$fecha' AND HORA = '$hora' AND MESA = '$mesa';", $conexion);
+    cerrar_conexion($conexion);
+}

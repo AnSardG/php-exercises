@@ -17,7 +17,7 @@ header {
     display: flex;
     justify-content: space-between;
     line-height: 1.5em;
-    align-items: center;    
+    align-items: center;
 }
 
 footer {
@@ -40,11 +40,11 @@ ul {
     display: flex;
 }
 
-li{
+li {
     margin-right: 35px;
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -54,7 +54,7 @@ a{
 .welcome {
     display: flex;
     flex-direction: column;
-    background-color: white;    
+    background-color: white;
     border-radius: 10px;
     align-items: center;
     justify-content: flex-start;
@@ -80,6 +80,7 @@ a{
     justify-content: space-between;
     width: 15%;
 }
+
 .welcome-buttons button {
     background-color: rgb(59, 59, 59);
     color: white;
@@ -95,14 +96,14 @@ a{
 .login {
     display: flex;
     flex-direction: column;
-    background-color: white;    
+    background-color: white;
     border-radius: 10px;
     align-items: center;
     justify-content: flex-start;
     box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
     padding: 20px;
     margin: 0px 400px;
-    margin-top: 20px;    
+    margin-top: 20px;
 }
 
 .login h2 {
@@ -111,7 +112,7 @@ a{
     font-size: 30px;
 }
 
-.login-form { 
+.login-form {
     display: flex;
     flex-direction: column;
 }
@@ -127,8 +128,9 @@ form label {
 }
 
 form input:hover {
-    border-color: #a1dad0; /* Color azul más oscuro al pasar el mouse */
-  }
+    border-color: #a1dad0;
+    /* Color azul más oscuro al pasar el mouse */
+}
 
 form input {
     margin-bottom: 20px;
@@ -141,28 +143,60 @@ form input {
 input[type="submit"] {
     align-self: center;
     border: none;
-    
+
     border-radius: 5px;
     padding: 10px 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: rgb(59, 59, 59);
-    color: rgb(230, 230, 230);    
+    color: rgb(230, 230, 230);
 }
-    
-  input[type="submit"]:hover {
+
+input[type="submit"]:hover {
     background-color: #333;
-  }
-
-  .login p {
-    margin: 0;    
-  }
-
-  .used-email {
-    color: red;    
 }
 
-  .login a {
+.login p {
+    margin: 0;
+}
+
+.used-email {
+    color: red;
+}
+
+.login a {
     text-decoration: underline;
     color: #00000091;
-  }
+}
+
+/* BOOKING HISTORIC STYLES */
+.historico {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
+    padding: 20px;
+    margin: 0px 350px;
+    margin-top: 20px;
+}
+
+.historico table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.historico th {
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}
+
+.historico td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}

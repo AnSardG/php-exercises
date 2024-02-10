@@ -6,7 +6,7 @@
             <input type="text" name="email" id="email" required>               
             <label for="password">Contraseña:</label>
             <input type="password" name="password" id="password" required>
-            <?php if(isset($loggedSuccesfully) && !$loggedSuccesfully): ?>
+            <?php if(isset($_SESSION['logged_succesfully']) && !$_SESSION['logged_succesfully']): ?>
                 <p class="used-email">El correo o la contraseña es/son incorrecto/as.</p>
             <?php endif ?>         
             <input name="login" type="submit" value="Iniciar sesión">          

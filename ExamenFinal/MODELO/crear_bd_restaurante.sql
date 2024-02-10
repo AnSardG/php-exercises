@@ -44,10 +44,14 @@ INSERT IGNORE INTO CLIENTES (CORREO, PASSWD) VALUES
     ('cliente9@example.com', 'pword');
 
 INSERT IGNORE INTO RESERVAS (FECHA, HORA, MESA, DESCRIPCION, CORREO_CLIENTE) VALUES
-    ('2024-02-05', '20:30:00', 1, 'Reserva para almuerzo', 'cliente1@example.com'),
+    ('2024-02-05', '20:30:00', 1, 'Reserva para almuerzo grupal', 'cliente1@example.com'),
+    ('2024-02-05', '20:30:00', 2, 'Reserva para almuerzo grupal', 'cliente1@example.com'),
+    ('2024-02-05', '20:30:00', 3, 'Reserva para almuerzo grupal', 'cliente1@example.com'),
+    ('2024-02-05', '20:30:00', 4, 'Reserva para almuerzo grupal', 'cliente1@example.com'),
+    ('2024-02-05', '20:30:00', 5, 'Reserva para almuerzo grupal', 'cliente1@example.com'),
     ('2024-02-06', '21:00:00', 2, 'Celebración de aniversario', 'cliente2@example.com'),
     ('2024-02-07', '21:30:00', 3, NULL, 'cliente7@example.com'),
-    ('2024-02-08', '22:30:00', 4, NULL, 'cliente6@example.com'),
+    ('2024-02-08', '22:30:00', 4, NULL, 'cliente6@example.com'),    
     ('2024-02-09', '23:00:00', 5, NULL, 'cliente5@example.com');
 
 INSERT IGNORE INTO EMPLEADOS (USUARIO, PASSWD) VALUES

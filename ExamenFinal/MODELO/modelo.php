@@ -41,3 +41,16 @@ function checkLoginCliente($email, $password) {
     cerrar_conexion($conexion);
     return $exists;    
 }
+
+function getHistoryCliente($email) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT FECHA, HORA, MESA, DESCRIPCION FROM RESERVAS WHERE CORREO_CLIENTE = '$email';", $conexion);
+    while ($fila = obtener_resultados($resultado)) {
+        $history[] = $fila;
+    }
+    cerrar_conexion($conexion);
+    if(!isset($history)){
+        $history = null;
+    }
+    return $history;
+}

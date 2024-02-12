@@ -2,18 +2,6 @@
 require_once('config.php');
 require_once('bbdd.php');
 
-function getClientes() {
-    //Conectamos con la base de datos y realizamos la consulta.
-    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
-    $resultado = consulta_base_de_datos("SELECT * FROM CLIENTES;", $conexion);
-    $clientes = array();
-    while($fila = obtener_resultados($resultado)){
-        $clientes[] = $fila;
-    }
-    cerrar_conexion($conexion);
-    return $clientes;    
-}
-
 function isRegistered($email) {
     $registered = false;
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
@@ -91,4 +79,45 @@ function createBooking($fecha, $hora, $mesa, $descripcion, $user_email) {
     $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
     consulta_base_de_datos("INSERT INTO RESERVAS (FECHA, HORA, MESA, DESCRIPCION, CORREO_CLIENTE) VALUES ('$fecha', '$hora', $mesa, '$descripcion', '$user_email');", $conexion);
     cerrar_conexion($conexion);
+}
+
+function checkLoginAdmin($user, $password) {
+    $exists = false;
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT * FROM EMPLEADOS WHERE USUARIO = '$user' AND PASSWD = '$password';", $conexion);
+    if(obtener_resultados($resultado) != null) {
+        $exists = true;
+    }
+    cerrar_conexion($conexion);
+    return $exists;    
+}
+
+function adminAlreadyRegistered($user) {
+    $registered = false;
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT USUARIO FROM EMPLEADOS WHERE USUARIO = '$user';", $conexion);
+    if(obtener_resultados($resultado) != null) {
+        $registered = true;
+    }
+    cerrar_conexion($conexion);
+    return $registered;
+}
+
+function addUser($user, $password) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    consulta_base_de_datos("INSERT IGNORE INTO EMPLEADOS (USUARIO, PASSWD) VALUES ('$user', '$password');", $conexion);
+    cerrar_conexion($conexion);
+}
+
+function getAllBookings() {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT * FROM RESERVAS;", $conexion);
+    while ($fila = obtener_resultados($resultado)) {
+        $history[] = $fila;
+    }
+    cerrar_conexion($conexion);
+    if(!isset($history)){
+        $history = null;
+    }
+    return $history;
 }

@@ -2,14 +2,16 @@
 <div class="historico">
     <h2>Visualizar Reservas</h2>    
     <?php if(!$bookings_history_empty) : ?>
-        <div class="bookings-date">            
-            <form action="index.php" method="POST">                          
+                    
+            <form action="index.php" method="POST">  
+            <div class="bookings-date">                        
                 <label for="fecha">Fecha:</label>  
                 <input type="date" name="fecha" id="fecha" required>
                 <button type="submit" name="filtrar" class="back-button">Filtrar</button>
+                </div>  
             </form>   
             
-        </div>    
+          
         <table>
             <thead>
                 <tr>
@@ -42,5 +44,5 @@
     <?php else : ?>
         <h3>Aún no se han hecho reservas.</h3>
     <?php endif ?>
-    <a href="index.php"><button class="back-button">Atrás</button></a>
+    <a class="back-button" href="index.php">Atrás</a>
 </div>

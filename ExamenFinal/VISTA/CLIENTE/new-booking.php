@@ -3,7 +3,7 @@
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">    
         <div class="login-form">
             <label for="fecha">Fecha:</label>  
-            <input type="date" name="fecha" id="fecha" required>                   
+            <input type="date" name="fecha" id="fecha" min="<?php echo date('Y-m-d')?>" required>                   
 
             <label for="hora">Hora:</label>
             <select name="hora" id="hora" required>

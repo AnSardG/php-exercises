@@ -277,9 +277,31 @@ input[type="submit"]:hover {
     padding-left: 30%;
 }
 
+.add-user {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -2px 2px rgba(59, 59, 59, 0.178);
+    padding: 20px;
+    margin: 0px 400px;
+    margin-top: 20px;
+}
+
+.add-user h2 {
+    margin: 10px 0px 30px 0px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.add-user form {
+    width: 100%;
+}
+
 .back-button {
     border: none;
-
     border-radius: 5px;
     padding: 10px 20px;
     margin-left: 500px;
@@ -287,6 +309,7 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
     background-color: rgb(59, 59, 59);
     color: rgb(230, 230, 230);
+    text-decoration: none;
 }
 
 .back-button:hover {
@@ -295,5 +318,15 @@ input[type="submit"]:hover {
 
 .bookings-date {
     display: flex;
-    flex-direction: row;
+    flex-direction: row;    
+    align-items: center;
+}
+
+.bookings-date label {
+    margin-right: 100px;
+}
+
+.botoncito {
+    margin-top: 20px;
+    margin-left: 300px;
 }

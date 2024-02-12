@@ -1,4 +1,4 @@
-<div class="login">
+<div class="add-user">
     <h2>Añadir Nuevo Usuario</h2>    
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">    
         <div class="login-form">
@@ -10,7 +10,9 @@
                 <p class="used-email">El usuario ya se encuentra registrado en la base de datos.</p>
             <?php endif ?>                   
             <input name="newUser" type="submit" value="Añadir Usuario">          
-            <a href="index.php"><button class="back-button">Atrás</button></a>
+            <div class="botoncito">
+                <a class="back-button" href="index.php">Atrás</a>
+            </div>            
         </div>  
     </form>
 </div>

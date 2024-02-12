@@ -10,7 +10,7 @@ $data = array();
 $data['title'] = TITLE;
 $data['header'] = HEADER;
 $data['body'] = BODY;
-$data['footer'] = FOOTER;
+$data['footer'] = "&copy; " . date('Y') ." Restaurante XYZ. Todos los derechos reservados.";
 
 if (isset($_GET['logout'])) {
     $_SESSION['logged_succesfully'] = false;

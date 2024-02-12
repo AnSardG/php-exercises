@@ -121,3 +121,16 @@ function getAllBookings() {
     }
     return $history;
 }
+
+function getBookingsByDate($fecha) {
+    $conexion = crear_conexion(DB_HOST, DB_USER_ADMIN, DB_PASSWORD_ADMIN, DB_NAME);
+    $resultado = consulta_base_de_datos("SELECT * FROM RESERVAS WHERE FECHA = '$fecha';", $conexion);
+    while ($fila = obtener_resultados($resultado)) {
+        $history[] = $fila;
+    }
+    cerrar_conexion($conexion);
+    if(!isset($history)){
+        $history = null;
+    }
+    return $history;
+}

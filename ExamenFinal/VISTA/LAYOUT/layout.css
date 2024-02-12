@@ -292,3 +292,8 @@ input[type="submit"]:hover {
 .back-button:hover {
     background-color: #333;
 }
+
+.bookings-date {
+    display: flex;
+    flex-direction: row;
+}

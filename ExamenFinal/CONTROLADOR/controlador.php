@@ -152,11 +152,18 @@ if(isset($_SESSION['admin_logged']) && $_SESSION['admin_logged']) {
         deleteBooking($_POST['fecha'], $_POST['hora'], $_POST['mesa']);
     }
 
+    if(isset($_POST['filtrar']) && $_SERVER['REQUEST_METHOD'] == "POST") {
+        $bookings_history = getBookingsByDate($_POST['fecha']);
+        $data['body'] = BODY_VIEW_BOOKINGS;
+    }
+
     if(isset($_POST['viewBookings']) && $_SERVER['REQUEST_METHOD'] == "POST"
     || (isset($_GET['cancelar']))) {
         $bookings_history = getAllBookings();
         $data['body'] = BODY_VIEW_BOOKINGS;
     }        
+    
+    
 
     $bookings_history_empty = !isset($bookings_history);
 

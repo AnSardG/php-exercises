@@ -10,6 +10,7 @@
                 <p class="used-email">El usuario ya se encuentra registrado en la base de datos.</p>
             <?php endif ?>                   
             <input name="newUser" type="submit" value="Añadir Usuario">          
+            <a href="index.php"><button class="back-button">Atrás</button></a>
         </div>  
     </form>
 </div>
